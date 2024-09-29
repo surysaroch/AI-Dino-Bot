@@ -34,17 +34,17 @@ class Dino(pygame.sprite.Sprite):
     def jump(self):
         # Make the dino jump if it's on the ground
         if self.y == SPRITE_LEVEL:
-            self.velocity_y = -20  # Adjust the jump strength as needed
+            self.velocity_y = -20  # Jump strength
 
     def update(self):
-        # Update the dino's position or animation frame if needed
+        #Animation frame
         self.y += self.velocity_y
         self.rect.y = self.y + 18 
         # Add gravity to the vertical velocity
         
         if self.y < 250:
             self.velocity_y = 20
-        # Check if the dino is on the ground (you need to implement this logic)
+        # Check if the dino is on the ground
         if self.y >= SPRITE_LEVEL:
             self.y = SPRITE_LEVEL
             self.velocity_y = 0
