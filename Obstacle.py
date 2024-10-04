@@ -22,7 +22,7 @@ class Obstacle(pygame.sprite.Sprite):
             return pygame.Rect(x, y + 12, 40, 100)
 
     def update(self):
-        self.x -= 15  # Adjust the speed of the obstacle as needed
+        self.x -= 15  # Adjust the speed of the obstacle
         self.rect.x = self.x
         if self.x < -self.rect.width:
             self.x = WIN_WIDTH
