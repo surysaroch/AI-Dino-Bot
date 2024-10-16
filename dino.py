@@ -50,7 +50,6 @@ class Dino(pygame.sprite.Sprite):
             self.velocity_y = 0
         self.update_mask()
 
-
     def update_mask(self):
         self.mask = pygame.mask.from_surface(self.image.subsurface(self.frames[self.state]))
 
@@ -150,7 +149,6 @@ class Ground:
         ground_image2.blit(self.image, (0, 0), self.frames['ground'])
         screen.blit(ground_image2, self.rect2.topleft)
 
-
 def check_collision(dino, obstacle):
     offset = (obstacle.rect.left - dino.rect.left, obstacle.rect.top - dino.rect.top)
     collision_point = dino.mask.overlap(obstacle.mask, offset)
@@ -158,7 +156,6 @@ def check_collision(dino, obstacle):
 
 def draw(screen, dinos, obstacles, ground, score):
     screen.fill((255, 255, 255))
-
 
     for dino in dinos:
         dino.draw(screen)
@@ -168,11 +165,10 @@ def draw(screen, dinos, obstacles, ground, score):
     for obstacle in obstacles:
         obstacle.draw(screen)
 
-        # Render the score
+    # Render the score
     font = pygame.font.SysFont('Arial', 30)
     text = font.render(f"Score: {score}", True, (0, 0, 0))
     screen.blit(text, (10, 10))
-
     pygame.display.flip()
 
 def main(genomes, config):
@@ -277,14 +273,10 @@ def main(genomes, config):
 
         # Draw everything on the screen
         draw(screen, dinos, obstacles, ground, score)
-
         # Update the display
         pygame.display.flip()
-
         # Cap the frame rate
         clock.tick(30)
-
-
 
 def run(config_path):
     # Load configuration file 
@@ -301,10 +293,7 @@ def run(config_path):
     p.add_reporter(stats)
 
     winner = p.run(main, 30)
-
     print('\nBest genome:\n{!s}'.format(winner))
-
-
 
 if __name__ == "__main__":
     local_dir = os.path.dirname(__file__)
